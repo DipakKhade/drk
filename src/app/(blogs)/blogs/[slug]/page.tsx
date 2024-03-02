@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { options } from "@/components/RichText";
+import Spinner from "@/components/Spinner";
 interface slugProps {
   params: {
     slug: string;
@@ -26,11 +27,11 @@ export default function Page(props: slugProps) {
     })();
   }, [posts, slug]);
 
-  console.log('http://'+currentPost?.fields?.coverImage?.fields?.file?.url)
+  // console.log('http://'+currentPost?.fields?.coverImage?.fields?.file?.url)
 
 
   if (loading) {
-    return <div className="pt-60">laoding ...</div>;
+    return <Spinner/>
   }
 
   return <main className="pt-32 prose dark:prose-invert m-auto">

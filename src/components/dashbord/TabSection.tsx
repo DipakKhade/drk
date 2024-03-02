@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { Tabs } from "./Tabs";
-import githubProfile from '../../src/assets/images/gitprofile.png'
-import Portfolio from '../../src/assets/images/portfolio.png'
-import Blogs from '../../src/assets/images/Blogs.png'
-import Snippets from '../../src/assets/images/snippets.png'
+import { Tabs } from "../Tabs";
+import githubProfile from '../../assets/images/gitprofile.png'
+import Portfolio from '../../assets/images/portfolio.png'
+import Blogs from '../../assets/images/Blogs.png'
+import Snippets from '../../assets/images/snippets.png'
+import { Suspense } from "react";
+import Spinner from "../Spinner";
 
 export function TabsSection() {
   const tabs = [
@@ -88,12 +90,15 @@ function BlogsTab(){
 }
 const GitHub = () => {
   return (
+    <Suspense fallback={<Spinner/>}>
+
     <Image
       src={githubProfile}
       alt="dummy image"
       width="1000"
       height="1000"
       className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
-    />
+      />
+      </Suspense>
   );
 };

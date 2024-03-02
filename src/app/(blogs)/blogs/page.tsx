@@ -1,7 +1,7 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useGetPosts } from '@/app/hooks/post';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useGetPosts } from "@/app/hooks/post";
 import {
   Card,
   CardContent,
@@ -9,8 +9,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import Skeleton from '@/components/Skeleton';
+} from "@/components/ui/card";
+import Skeleton from "@/components/Skeleton";
 
 interface Post {
   metadata: {
@@ -74,52 +74,49 @@ interface Post {
   };
 }
 
+const Page = () => {
+  const { posts, loading } = useGetPosts();
 
-
-const Page = () =>{
-
-const{posts,loading}=useGetPosts()
-
-   console.log(posts)
+  console.log(posts);
   //  console.log(loading)
 
-
-   if(loading){
-    return <Skeleton/>
-   }
+  if (loading) {
+    return <Skeleton />;
+  }
   return (
-  
-   <>
-   <main className='pt-32 md:w-[80vw] m-auto'>
-
-      <div className='container'>
-        <ul className='sm:flex space-y-5 md:space-x-4 md:space-y-0 flex-wrap'>
-          {posts.items.map((post:Post, index:number) => (
-            <div key={index}>
-<Link href={`/blogs/${post.fields.slug}`}>
-
-              <Card className="w-[340px] md:w-[500px]">
-              <CardHeader>
-      
-        </CardHeader>
-        {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
-        <CardContent> <Image  src={'http://'+post.fields.coverImage.fields.file.url} height={400} width={500} alt={post.fields.coverImage.fields.title} /></CardContent>
-        <CardTitle className='pl-6'>{post.fields.title}</CardTitle>
-        < CardFooter>{post.fields.exceprt}</CardFooter>
-                </Card>
-
+    <>
+      <main className="pt-32 md:w-[80vw] m-auto">
+        <div className="container">
+          <h2 className="text-2xl font-bold pb-8">I share what I&apos;ve been working on recently and things I learned along the way.</h2>
+          <ul className="sm:flex  flex-wrap gap-4">
+            {posts.items.map((post: Post, index: number) => (
+              <div key={index} className="space-y-5 space-x-0 md:space-x-4 md:space-y-0">
+                <Link href={`/blogs/${post.fields.slug}`}>
+                  <Card className="w-[340px] md:w-[500px] hover:shadow-md">
+                    <CardHeader></CardHeader>
+                    {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
+                    <CardContent>
+                      {" "}
+                      <Image
+                      className="rounded-sm"
+                        src={"http://" + post.fields.coverImage.fields.file.url}
+                        height={400}
+                        width={500}
+                        alt={post.fields.coverImage.fields.title}
+                      />
+                    </CardContent>
+                    <CardTitle className="pl-6">{post.fields.title}</CardTitle>
+                    <CardFooter>{post.fields.exceprt}</CardFooter>
+                  </Card>
                 </Link>
-            </div>
-          ))}
-        </ul>
-      </div>
-    </main>
-   </>
-
-    
-  
-  )
-}
+              </div>
+            ))}
+          </ul>
+        </div>
+      </main>
+    </>
+  );
+};
 
 // export const getStaticProps = async () => {
 
@@ -130,6 +127,5 @@ const{posts,loading}=useGetPosts()
 //     }
 //   }
 // }
-
 
 export default Page;
