@@ -3,6 +3,8 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
+
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -20,6 +22,7 @@ const config = {
         "2xl": "1400px",
       },
     },
+
     extend: {
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
@@ -79,8 +82,10 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+
+    
   },
-  plugins: [require("tailwindcss-animate"),addVariablesForColors],
+  plugins: [require("tailwindcss-animate"),addVariablesForColors,require('@tailwindcss/typography'),],
 } satisfies Config
 
 

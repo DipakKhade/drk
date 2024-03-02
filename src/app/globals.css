@@ -58,6 +58,7 @@
   body {
     @apply bg-background text-foreground;
   }
+
 }
 
 .no-visible-scrollbar {
@@ -69,3 +70,21 @@
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.no-tailwind{
+  all: unset !important;
+}
+
+pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 2px;
+
+}
+
+code{
+  padding: 12px;
+}
+
+
+
