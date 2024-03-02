@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./ThemeToggle";
+import Link from "next/link";
 const rs = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function Header() {
           </h1>
 
           <div className="absolute right-6 flex space-x-2">
+            <Link href={'/login'}>
             <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-violet-700">Log in</Button>
+            </Link>
             <ModeToggle/>
           </div>
         </div>
