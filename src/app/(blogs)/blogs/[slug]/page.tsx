@@ -34,18 +34,21 @@ export default function Page(props: slugProps) {
   }
 
   return (
-    <main className="pt-32 p-2 prose dark:prose-invert m-auto">
+    <main className="pt-32 p-2 w-[80vw] m-auto">
+      <div className="w-full">
+
       {currentPost?.fields?.title}
 
       {currentPost?.fields?.coverImage?.fields?.file?.url && (
         <Image
-          src={"http://" + currentPost?.fields?.coverImage?.fields?.file?.url}
-          width={600}
-          height={500}
-          alt={currentPost?.fields?.coverImage?.fields?.title}
+        src={"http://" + currentPost?.fields?.coverImage?.fields?.file?.url}
+        width={600}
+        height={500}
+        alt={currentPost?.fields?.coverImage?.fields?.title}
         />
-      )}
+        )}
       {/* {JSON.stringify(currentPost)} */}
+        </div>
 
       {documentToReactComponents(currentPost?.fields?.content, options)}
     </main>

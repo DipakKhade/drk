@@ -32,7 +32,7 @@ const BlogsPreview = () => {
           size={"lg"}
           asChild
         >
-          <Link href={"/blogs"} target="_blank">
+          <Link href={"/blogs"} >
             <p className="text-white">See more</p>{" "}
             <ChevronRight className="text-white h-4 w-4 ml-1 hover:translate-x-1 ease-in-out duration-200 " />
           </Link>

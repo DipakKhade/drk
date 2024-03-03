@@ -4,40 +4,70 @@ import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
 import { cn } from "@/lib/utils";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { useForm } from 'react-hook-form';
+import axios from "axios";
 
-export default function page() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted");
-  };
+export default function Page() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+ 
+  
+
   return (
-    <main className="pt-24">
+    <main className="pt-24 w-full">
+      <Tabs defaultValue="SignUp" className="sm:w-[400px] m-auto">
+      <TabsList>
+    <TabsTrigger value="SignUp">SignUp</TabsTrigger>
+    <TabsTrigger value="Login">Login</TabsTrigger>
+  </TabsList>
+  <TabsContent value="SignUp">
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
           Welcome
         </h2>
         <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-          Login @drk if you can because we don&apos;t have a login flow yet
+          SignUp because we don&apos;t have a login flow yet
         </p>
 
-        <form className="my-8" onSubmit={handleSubmit}>
+        <form className="my-8" onSubmit={handleSubmit(async(userdata)=>{
+const res=await axios.post('/api/users',{
+  data:userdata
+})
+// console.log(userdata)
+localStorage.setItem('token','bearer '+res.data.token)
+})}>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
-              <Label htmlFor="firstname">First name</Label>
-              <Input id="firstname" placeholder="Tyler" type="text" />
+              <Label htmlFor="name">name</Label>
+              <Input {...register('name')} id="name" placeholder="Dipak" type="text" />
             </LabelInputContainer>
-            <LabelInputContainer>
-              <Label htmlFor="lastname">Last name</Label>
-              <Input id="lastname" placeholder="Durden" type="text" />
-            </LabelInputContainer>
+           
           </div>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email Address</Label>
-            <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+            <Input {...register('email')} id="email" placeholder="dipak@gmail.com" type="email" />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="password">Password</Label>
-            <Input id="password" placeholder="••••••••" type="password" />
+            <Input {...register('password')} id="password" placeholder="••••••••" type="password" />
           </LabelInputContainer>
 
           <button
@@ -74,6 +104,39 @@ export default function page() {
           </div>
         </form>
       </div>
+      </TabsContent>
+      <TabsContent value="Login">
+      <Card>
+          <CardHeader>
+            <CardTitle>Account</CardTitle>
+            <CardDescription>
+              Add Email and Password here. Click Login when you&apos;re done.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="space-y-1">
+              <Label htmlFor="Email">Email</Label>
+              <Input id="Email" defaultValue="" />
+            </div>
+            <div className="space-y-1">
+            <LabelInputContainer className="mb-4">
+            <Label htmlFor="password">Password</Label>
+            <Input id="password" placeholder="••••••••" type="password" />
+          </LabelInputContainer>
+            </div>
+          </CardContent>
+          <CardFooter>
+          <button
+            className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+            type="submit"
+          >
+            Log in &rarr;
+            <BottomGradient />
+          </button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      </Tabs>
     </main>
   );
 }

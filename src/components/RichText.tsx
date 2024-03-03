@@ -1,13 +1,16 @@
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Link from "next/link";
 import ContentfulImage from "./Contentfulinage";
+import { CodeCard } from "./Code";
 export const options: any = {
   renderMark: {
     [MARKS.CODE]: (text: string) => {
       return (
-        <pre className="bg-slate-950 dark:bg-slate-50 text-slate-50 dark:text-slate-900 p-3">
+        <CodeCard>
+        <pre>
           <code>{text}</code>
         </pre>
+        </CodeCard>
       );
     },
   },
