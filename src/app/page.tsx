@@ -6,17 +6,15 @@ import Spinner from "@/components/Spinner";
 
 export default function Home() {
   return (
-   <>
-  <Suspense fallback={<Spinner/>}>
+    <>
+      <Suspense fallback={<Spinner />}>
+        <main className="pt-24">
+          <Hero />
 
-<main className="pt-24">
-  <Hero/>
-
-<TabsSection/>
-  <BlogsPreview/>
-</main>
-  </Suspense>
-  
-   </>
+          <TabsSection />
+          <BlogsPreview />
+        </main>
+      </Suspense>
+    </>
   );
 }

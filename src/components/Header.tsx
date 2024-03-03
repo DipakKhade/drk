@@ -16,21 +16,22 @@ export default function Header() {
           <h1
             className={cn(
               "sm:text-2xl font-semibold text-neutral-800 dark:text-neutral-200 md:text-3xl mb-2",
-              rs.className
+              rs.className,
             )}
           >
-           @Dipak Khade
+            @Dipak Khade
           </h1>
 
           <div className="absolute right-6 flex space-x-2">
-            <Link href={'/login'}>
-            <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-violet-700">Log in</Button>
+            <Link href={"/login"}>
+              <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-violet-700">
+                Log in
+              </Button>
             </Link>
-            <ModeToggle/>
+            <ModeToggle />
           </div>
         </div>
       </nav>
     </>
   );
 }
-

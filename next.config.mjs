@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
-    //setting own loader while loading images
-    images: {
-      domains: ['images.ctfassets.net'],
-      
+  //setting own loader while loading images
+  images: {
+    domains: ["images.ctfassets.net"],
   },
   // images: {
   //   remotePatterns: [

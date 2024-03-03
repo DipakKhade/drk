@@ -1,10 +1,9 @@
-
-interface Config{
-    title :string,
-    description: string
+interface Config {
+  title: string;
+  description: string;
 }
 
-export const siteConfig :Config={
-    title: "Dipak Khade",
-    description: "A Next Application for Learning",
-}
+export const siteConfig: Config = {
+  title: "Dipak Khade",
+  description: "A Next Application for Learning",
+};

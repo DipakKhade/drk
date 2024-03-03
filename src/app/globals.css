@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 @layer base {
   :root {
@@ -50,7 +49,6 @@
   }
 }
 
- 
 @layer base {
   * {
     @apply border-border;
@@ -58,7 +56,6 @@
   body {
     @apply bg-background text-foreground;
   }
-
 }
 
 .no-visible-scrollbar {
@@ -71,7 +68,7 @@
   display: none;
 }
 
-.no-tailwind{
+.no-tailwind {
   all: unset !important;
 }
 
@@ -79,12 +76,8 @@ pre {
   margin: 0 !important;
   padding: 0 !important;
   padding-top: 2px;
-
 }
 
-code{
+code {
   padding: 12px;
 }
-
-
-

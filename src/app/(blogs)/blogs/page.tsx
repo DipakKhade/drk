@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useGetPosts } from "@/app/hooks/post";
+import { useGetPosts } from "@/hooks/post";
 import {
   Card,
   CardContent,
@@ -77,7 +77,7 @@ interface Post {
 const Page = () => {
   const { posts, loading } = useGetPosts();
 
-  console.log(posts);
+  // console.log(posts);
   //  console.log(loading)
 
   if (loading) {
@@ -87,18 +87,24 @@ const Page = () => {
     <>
       <main className="pt-32 md:w-[80vw] m-auto">
         <div className="container">
-          <h2 className="text-2xl font-bold pb-8">I share what I&apos;ve been working on recently and things I learned along the way.</h2>
-          <ul className="sm:flex  flex-wrap gap-4">
+          <h2 className="text-2xl font-bold pb-8">
+            I share what I&apos;ve been working on recently and things I learned
+            along the way.
+          </h2>
+          <ul className="sm:flex  flex-wrap gap-4 space-y-3 sm:space-y-0">
             {posts.items.map((post: Post, index: number) => (
-              <div key={index} className="space-y-5 space-x-0 md:space-x-4 md:space-y-0">
+              <div
+                key={index}
+                className="space-y-5 space-x-0 md:space-x-4 md:space-y-0"
+              >
                 <Link href={`/blogs/${post.fields.slug}`}>
-                  <Card className="w-[340px] md:w-[500px] hover:shadow-md">
+                  <Card className="w-[340px] lg:w-[500px] hover:shadow-md">
                     <CardHeader></CardHeader>
                     {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
                     <CardContent>
                       {" "}
                       <Image
-                      className="rounded-sm"
+                        className="rounded-sm"
                         src={"http://" + post.fields.coverImage.fields.file.url}
                         height={400}
                         width={500}

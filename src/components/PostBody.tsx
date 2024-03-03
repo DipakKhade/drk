@@ -1,13 +1,13 @@
-import RichText from './RichText'
+import RichText from "./RichText";
 
-const PostBody = ({ post }:any) => {
-  const { content } = post.fields
+const PostBody = ({ post }: any) => {
+  const { content } = post.fields;
 
   return (
-    <div className='mx-auto prose'>
+    <div className="mx-auto prose">
       <RichText content={content} />
     </div>
-  )
-}
+  );
+};
 
-export default PostBody
+export default PostBody;
