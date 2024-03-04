@@ -91,11 +91,11 @@ const Page = () => {
             I share what I&apos;ve been working on recently and things I learned
             along the way.
           </h2>
-          <ul className="sm:flex  flex-wrap gap-4 space-y-3 sm:space-y-0">
+          <ul className="grid gap-10 sm:grid-cols-2">
             {posts.items.map((post: Post, index: number) => (
               <div
                 key={index}
-                className="space-y-5 space-x-0 md:space-x-4 md:space-y-0"
+                className="group relative flex flex-col space-y-2"
               >
                 <Link href={`/blogs/${post.fields.slug}`}>
                   <Card className="w-[340px] lg:w-[500px] hover:shadow-md">

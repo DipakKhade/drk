@@ -34,7 +34,7 @@ export const Tabs = ({
     setActive(newTabs[0]);
   };
 
-  const [hovering, setHovering] = useState(false);
+  const [hovering, setHovering] = useState(true);
 
   return (
     <>

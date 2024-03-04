@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/siteConfig/config";
-import Header from "@/components/Header";
-import { ThemeProvider } from "@/components/theme-provider";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
+import { Providers } from "./Providers";
+import Header from "@/components/Header";
 
 //font
 const fontSans = FontSans({
@@ -30,17 +30,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body className={cn(fontSans.variable, fontHeading.variable)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {/* this is done as to keep footer in the bottom of the page */}
-          <div className="min-h-[calc(100vh-64px)]">{children}</div>
-        </ThemeProvider>
+  
+
+       
+          <div className="min-h-[calc(100vh-64px)]">
+        <Providers>
+<Header/>
+            {children}
+        </Providers>
+
+            </div>
+
       </body>
     </html>
   );
