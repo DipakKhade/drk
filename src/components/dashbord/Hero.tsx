@@ -1,8 +1,10 @@
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
-function Hero() {
+const Link = dynamic(() => import("next/link"), { ssr: false });
+
+
+export default function Hero() {
   return (
     <>
       <main className="h-96 md:h-[60vh] justify-center align-middle text-center">
@@ -26,7 +28,7 @@ function Hero() {
               size={"lg"}
               asChild
             >
-              <Link href={"/blogs"} target="_blank">
+              <Link href={"/blogs"}>
                 <p className="text-white">Blogs</p>{" "}
                 <ChevronRight className="text-white h-4 w-4 ml-1 hover:translate-x-1 ease-in-out duration-200 " />
               </Link>
@@ -50,4 +52,4 @@ function Hero() {
   );
 }
 
-export default dynamic(() => Promise.resolve(Hero), { ssr: false });
+// export default dynamic(() => Promise.resolve(Hero), { ssr: false });

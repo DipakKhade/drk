@@ -29,7 +29,7 @@ export default function Page() {
   } = useForm();
 
  
-  
+  console.log(process.env.JWT_SECRETE)
 
   return (
     <main className="pt-24 w-full">
