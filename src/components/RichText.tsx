@@ -2,36 +2,26 @@ import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Link from "next/link";
 import ContentfulImage from "./Contentfulinage";
 import { CodeCard } from "./Code";
+import { CopyButton } from "./CopyButton"
+
 export const options: any = {
   renderMark: {
     [MARKS.CODE]: (text: string) => {
       return (
         <CodeCard>
-        <pre>
-          <code>{text}</code>
-        </pre>
+      <pre>
+          <CopyButton className="absolute right-4" value={text}/>
+        <code>
+
+          {text}
+        </code>
+      </pre>
         </CodeCard>
       );
     },
   },
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
-      if (
-        node.content.find((item: any) =>
-          item.marks?.find((mark: any) => mark.type === "code"),
-        )
-      ) {
-        return (
-          <div>
-            <pre>
-              <code>{children}</code>
-            </pre>
-          </div>
-        );
-      }
 
-      return <p>{children}</p>;
-    },
 
     [INLINES.ENTRY_HYPERLINK]: (node: any) => {
       if (node.data.target.sys.contentType.sys.id === "post") {

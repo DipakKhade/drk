@@ -36,7 +36,7 @@ const router=useRouter();
 const[loader,setloader]=useState<boolean>(false)
  useEffect(()=>{
   if(success){
-    toast('Successfully Signed in')
+    toast.success('Successfully Signed in')
     setTimeout(() => {
       router.push('/blogs')
     },1000);
@@ -46,7 +46,7 @@ const[loader,setloader]=useState<boolean>(false)
  const sessionStatus=useSetRecoilState(sessionAtom)
   return (
     <main className="pt-24 w-full">
-       <Toaster />
+       <Toaster richColors position="top-right"/>
       <Tabs defaultValue="SignUp" className="sm:w-[400px] m-auto">
 
 <div className="pl-[24vw] sm:pl-[8vw]">
@@ -70,6 +70,7 @@ const[loader,setloader]=useState<boolean>(false)
 
         <form className="my-8" onSubmit={handleSubmit(async(userdata)=>{
           setloader(true)
+        
 const res=await axios.post('/api/signup',{
   data:userdata
 })
@@ -147,7 +148,12 @@ const res=await axios.post('/api/login',{
   data:d
 }
 )
-toast(res.data.msg)
+if(res.data.success){
+
+  toast.success(res.data.msg)
+}else{
+  toast.warning(res.data.msg)
+}
 setloader(false)
 if(res.data.success){
  setTimeout(() => {

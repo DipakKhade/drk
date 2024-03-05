@@ -27,6 +27,7 @@ export default function Page(props: slugProps) {
     })();
   }, [posts, slug]);
 
+  // console.log(currentPost)
   // console.log('http://'+currentPost?.fields?.coverImage?.fields?.file?.url)
 
   if (loading) {
@@ -34,7 +35,7 @@ export default function Page(props: slugProps) {
   }
 
   return (
-    <main className="pt-32 p-2 w-[80vw] m-auto">
+    <main className="pt-32 p-2 prose dark:prose-invert w-[80vw] m-auto">
       <div className="w-full">
 
       {currentPost?.fields?.title}
@@ -51,6 +52,7 @@ export default function Page(props: slugProps) {
         </div>
 
       {documentToReactComponents(currentPost?.fields?.content, options)}
+
     </main>
   );
 }

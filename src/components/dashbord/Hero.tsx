@@ -15,8 +15,8 @@ export default function Hero() {
             blogs fetched from Contentful. Under the hood, we employ Prisma and
             PostgreSQL for reliable data storage. Enjoy secure login and sign-up
             features with Axios, JSON Web Tokens, Zod for validation, and bcrypt
-            for password hashing. Our application is Dockerized for easy
-            deployment. Dive in and experience simplicity meets sophistication.
+            for password hashing. Dockerized for easy
+            deployment. 
           </p>
         </div>
 

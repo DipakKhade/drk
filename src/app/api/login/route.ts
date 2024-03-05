@@ -15,20 +15,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return new Promise((resolve, reject) => {
       bcrypt.compare(data.data.password, user.password, (err, isValid) => {
         if (err) {
-        //   console.error("Error comparing passwords:", err);
           reject(err);
         }
         if (isValid) {
-        //   console.log('Login successful');
           resolve(NextResponse.json({success:true, msg: "Login success" }));
         } else {
-        //   console.log('Invalid credentials');
           resolve(NextResponse.json({success:false, msg: "Invalid credentials" }));
         }
       });
     });
   } else {
-    // console.log('User not found');
     return NextResponse.json({success:false, msg: "Invalid credentials" });
   }
 }

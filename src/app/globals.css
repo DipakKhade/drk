@@ -76,8 +76,11 @@ pre {
   margin: 0 !important;
   padding: 0 !important;
   padding-top: 2px;
+  background-color: #18181B !important;
 }
 
 code {
   padding: 12px;
+  margin: 0 !important;
+  padding: 0 !important;
 }
