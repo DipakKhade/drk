@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { Providers } from "./Providers";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 //font
 const fontSans = FontSans({
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Providers>
 <Header/>
             {children}
+            <Footer/>
         </Providers>
 
             </div>

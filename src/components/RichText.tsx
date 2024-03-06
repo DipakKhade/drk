@@ -3,19 +3,30 @@ import Link from "next/link";
 import ContentfulImage from "./Contentfulinage";
 import { CodeCard } from "./Code";
 import { CopyButton } from "./CopyButton"
-
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { tomorrowNight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 export const options: any = {
   renderMark: {
     [MARKS.CODE]: (text: string) => {
       return (
         <CodeCard>
-      <pre>
-          <CopyButton className="absolute right-4" value={text}/>
+      {/* <pre>
+          
         <code>
 
           {text}
         </code>
-      </pre>
+      </pre> */}
+      <CopyButton className="absolute right-4" value={text}/>
+       <SyntaxHighlighter
+              language="html"
+              style={tomorrowNight}
+              customStyle={{
+                padding: "8px",
+              }}
+            >             
+              {text}
+            </SyntaxHighlighter>
         </CodeCard>
       );
     },

@@ -75,8 +75,8 @@ const res=await axios.post('/api/signup',{
   data:userdata
 })
 // console.log(userdata)
-// console.log(res.data)
-localStorage.setItem('token','bearer '+res.data.token)
+console.log(res.data)
+localStorage.setItem('token','bearer '+res.data.Token)
 setSuccess(true)
 sessionStatus('log out')
 })}>
