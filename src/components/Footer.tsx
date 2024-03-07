@@ -8,7 +8,7 @@ import { Toaster, toast } from "sonner"
 export default function Footer(){
     return<>
 <footer
-  className="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white mt-12">
+  className="flex flex-col items-center  text-center text-surface dark:text-white mt-12">
   <div className="container pt-9">
     <div className="mb-6 flex justify-center space-x-2">
       <a
@@ -110,7 +110,7 @@ export default function Footer(){
   </div>
 
 <Toaster/>
-<div className="flex space-x-3">
+<div className="flex space-x-3 pb-2">
 
   <Input placeholder="mymail@gmail.com"/>
   <Button

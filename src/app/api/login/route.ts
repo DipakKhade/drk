@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const data = await req.json();
-  console.log(data)
   const user = await prisma.user.findUnique({
     where: {
       email: data.data.email,

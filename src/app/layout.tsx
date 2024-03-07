@@ -36,7 +36,7 @@ export default function RootLayout({
   
 
        
-          <div className="min-h-[calc(100vh-64px)]">
+          <div className="min-h-[calc(100vh-64px)] dark:bg-[#121212]">
         <Providers>
 <Header/>
             {children}

@@ -12,91 +12,39 @@ import {
 import { Pagination } from "@/components/ui/pagination";
 import Spinner from "@/components/Spinner";
 import { client } from "@/lib/contentful/client.js";
-import { useEffect } from "react";
+import { useEffect ,useRef} from "react";
 import { usePagination } from "@mantine/hooks";
-interface Post {
-  metadata: {
-    tags: string[];
-  };
-  fields: {
-    title: string;
-    slug: string;
-    author: {
-      fields: {
-        picture: {
-          fields: {
-            title: string;
-            file: {
-              url: string;
-              details: {
-                size: number;
-                image: {
-                  width: number;
-                  height: number;
-                };
-              };
-              fileName: string;
-              contentType: string;
-            };
-          };
-        };
-      };
-    };
-    exceprt: string;
-    coverImage: {
-      fields: {
-        title: string;
-        file: {
-          url: string;
-          details: {
-            size: number;
-            image: {
-              width: number;
-              height: number;
-            };
-          };
-          fileName: string;
-          contentType: string;
-        };
-      };
-    };
-    content: {
-      nodeType: string;
-      data: any;
-      content: {
-        nodeType: string;
-        data: any;
-        content: {
-          nodeType: string;
-          data: any;
-          content: any[];
-        }[];
-      }[];
-    }[];
-  };
-}
+import { Post } from "@/lib/types";
+import Search from "@/components/SearchInput";
 
 const Page = () => {
 
+  const ITEM_PER_PAGE = 4;
   const [posts, setPosts] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [visible, setVisible] = useState<any>([]);
+  const buttonRef = useRef(null);
+  
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await client.getEntries({ content_type: "post" });
-        setPosts(response?.items || []);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-        setLoading(false);
-      }
-    };
+        setPosts(response?.items);
+     
+          setLoading(false);
+        
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+          setLoading(false);
+        }
+      };
+      
+      fetchPosts();
+setTimeout(() => {
+  buttonRef.current.click();
+}, 500);
+    }, []);
     
-    fetchPosts();
-  }, []);
-  
-  const ITEM_PER_PAGE = 2;
+    const [visible, setVisible] = useState(posts?.slice(0,ITEM_PER_PAGE));
   
   const pagination = usePagination({
     total: Math.ceil(posts?.length / ITEM_PER_PAGE),
@@ -108,6 +56,8 @@ const Page = () => {
     },
   });
 
+// console.log(posts)
+
   
   if (loading) {
     return <Spinner />;
@@ -115,12 +65,16 @@ const Page = () => {
   return (
     <>
       <main className="pt-32 md:w-[80vw] m-auto">
+        <Search/>
         <div className="container">
           <h2 className="text-2xl font-bold pb-8">
             I share what I&apos;ve been working on recently and things I learned
             along the way.
           </h2>
-          <ul className="grid gap-10 sm:grid-cols-2">
+
+          {
+            // visible  &&  visible.length>0 &&
+            <ul className="grid gap-10 sm:grid-cols-2">
             {visible?.map((post: Post, index: number) => (
               <div
                 key={index}
@@ -147,12 +101,16 @@ const Page = () => {
               </div>
             ))}
           </ul>
+
+          }
+         
         </div>
 
         <div className="p-8 w-full m-auto">
           <Pagination>
           <div className="flex gap-4">
             <button
+            ref={buttonRef}
               onClick={pagination.previous}
               className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 dark:text-slate-50 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"

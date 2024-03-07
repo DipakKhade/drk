@@ -10,13 +10,7 @@ export const options: any = {
     [MARKS.CODE]: (text: string) => {
       return (
         <CodeCard>
-      {/* <pre>
-          
-        <code>
-
-          {text}
-        </code>
-      </pre> */}
+   
       <CopyButton className="absolute right-4" value={text}/>
        <SyntaxHighlighter
               language="html"
