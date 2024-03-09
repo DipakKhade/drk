@@ -36,7 +36,7 @@ export default function Page(props: slugProps) {
 
   return (
     <main className="pt-32 p-2 prose dark:prose-invert w-[85vw] sm:w-[70vw] m-auto">
-      <div className="w-full ">
+      <div className="w-full">
 
       {currentPost?.fields?.title}
 

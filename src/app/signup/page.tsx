@@ -29,7 +29,7 @@ export default function Page(){
       if(success){
         toast.success('Successfully Signed in')
         setTimeout(() => {
-          router.push('/blogs')
+          router.push('/login')
         },1000);
       }
      },[success])
