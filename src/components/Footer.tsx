@@ -3,9 +3,12 @@ import Link from "next/link"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
 import { Toaster, toast } from "sonner"
+import { useState } from "react";
+import axios from "axios";
 
 
 export default function Footer(){
+  const [email,setEmail]=useState<string>('')
     return<>
 <footer
   className="flex flex-col items-center  text-center text-surface dark:text-white mt-12">
@@ -111,11 +114,21 @@ export default function Footer(){
 
 <Toaster/>
 <div className="flex space-x-3 pb-2">
-
-  <Input placeholder="mymail@gmail.com"/>
+  <Input
+  onChange={(e)=>setEmail(e.target.value)}
+   className="sm:w-80" placeholder="mymail@gmail.com"/>
   <Button
-  onClick={()=>{
-    toast.error('newsletter is yet to setup')
+
+  onClick={async()=>{
+
+   const res= await axios.post('/api/newslatter',{
+      data:email
+    })
+    if(res.status==200){
+      toast('email has added , you get newlatter update on your mail')
+    }else{
+      toast('enter a valid email')
+    }
   }}
    className="bg-zinc-800">newsletter</Button>
 </div>

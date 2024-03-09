@@ -16,3 +16,9 @@ model user{
    password String 
    token String?
 }
+
+
+model newslatter{
+  id Int @id @default(autoincrement())
+  email String
+}
