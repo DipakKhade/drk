@@ -40,7 +40,7 @@ const BlogsPreview = () => {
       </div>
 
       <CardContainer className="w-full cursor-pointer">
-        <Link href="/blogs" target="_blank">
+        <Link href="/blogs">
           <div className="hidden md:block py-3 pr-3 md:py-6 md:pr-6 rounded-r-xl md:rounded-r-2xl bg-neutral-800 shadow-2xl">
             <CardItem>
               <Image

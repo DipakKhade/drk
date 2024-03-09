@@ -39,12 +39,12 @@ const Page = () => {
       };
       
       fetchPosts();
-setTimeout(() => {
-  buttonRef.current.click();
-}, 500);
+// setTimeout(() => {
+//   buttonRef.current.click();
+// }, 500);
     }, []);
     
-    const [visible, setVisible] = useState(posts?.slice(0,ITEM_PER_PAGE));
+    // const [visible, setVisible] = useState(posts?.slice(0,ITEM_PER_PAGE));
   
   const pagination = usePagination({
     total: Math.ceil(posts?.length / ITEM_PER_PAGE),
@@ -52,7 +52,7 @@ setTimeout(() => {
     onChange(page) {
       const start = (page - 1) * ITEM_PER_PAGE;
       const end = start + ITEM_PER_PAGE;
-      setVisible(posts.slice(start, end));
+      // setVisible(posts.slice(start, end));
     },
   });
 
@@ -64,8 +64,8 @@ setTimeout(() => {
   }
   return (
     <>
-      <main className="pt-32 md:w-[80vw] m-auto">
-        <Search/>
+      <main className="pt-32 md:w-[90vw] m-auto">
+        {/* <Search/> */}
         <div className="container">
           <h2 className="text-2xl font-bold pb-8">
             I share what I&apos;ve been working on recently and things I learned
@@ -74,14 +74,14 @@ setTimeout(() => {
 
           {
             // visible  &&  visible.length>0 &&
-            <ul className="grid gap-10 sm:grid-cols-2">
-            {visible?.map((post: Post, index: number) => (
+            <ul className="grid gap-10 sm:grid-cols-3">
+            {posts?.map((post: Post, index: number) => (
               <div
                 key={index}
                 className="group relative flex flex-col space-y-2"
               >
                 <Link href={`/blogs/${post.fields.slug}`}>
-                  <Card className="w-[340px] lg:w-[500px] hover:shadow-md">
+                  <Card className="w-[440px] lg:w-[400px] hover:shadow-md hover:translate--11">
                     <CardHeader></CardHeader>
                     {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
                     <CardContent>
@@ -106,7 +106,7 @@ setTimeout(() => {
          
         </div>
 
-        <div className="p-8 w-full m-auto">
+        {/* <div className="p-8 w-full m-auto">
           <Pagination>
           <div className="flex gap-4">
             <button
@@ -157,7 +157,7 @@ setTimeout(() => {
             </button>
           </div>
           </Pagination>
-        </div>
+        </div> */}
       </main>
     </>
   );

@@ -1,16 +1,22 @@
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
-import dynamic from "next/dynamic";
-const Link = dynamic(() => import("next/link"), { ssr: false });
-
-export default function Hero() {
-  return (
+import Link from "next/link";
+export default function Hero(){
+  return(
     <>
-      <main className="h-96 md:h-[60vh] justify-center align-middle text-center">
-        <div className="p-6 md:p-24">
-          <h1 className="text-3xl md:text-6xl font-bold">Hello, World!</h1>
-          <p className="p-4 text-lg text-gray-500 indent-7">
-            Built with Next.js 14 server components and adorned with the sleek
+    <section className="flex  items-center relative">
+ 
+     
+    <div className="relative items-center w-full gap-12 p-8 mx-auto lg:inline-flex lg:p-20 max-w-7xl rounded-3xl lg:py-32">
+      <div className="max-w-4xl mx-auto text-center">
+        <div>
+          <span className="inline-flex items-center"><span className="px-6 py-2 text-base font-bold uppercase rounded-lg">Hello, World!</span></span>
+          <p className="mx-auto mt-8 text-2xl font-extrabold tracking-tight md:text-4xl">
+          Built with Next.js 14 server components
+            <span className="md:block">An End to End fullstack site</span>
+          </p>
+          <p className="max-w-3xl mx-auto mt-4 lg:text-lg text-slate-500">
+          adorned with the sleek
             Shadcn Aceternity UI, integrates dynamic
             blogs fetched from Contentful. Under the hood, we employ Prisma and
             PostgreSQL for reliable data storage. Enjoy secure login and sign-up
@@ -19,7 +25,7 @@ export default function Hero() {
             deployment. 
           </p>
         </div>
-
+        <div className="flex flex-col justify-center gap-3 mt-10 sm:flex-row">
         <div className=" space-x-5">
           
           <Link href={"/blogs"}>
@@ -43,10 +49,16 @@ export default function Hero() {
             </Button>
               </Link>
         </div>
-        
-      </main>
-    </>
-  );
+        </div>
+        {/* <div className="mt-3">
+          <span className="text-white">Get to known when we will launch. We won&lsquo;t share your email.</span>
+        </div> */}
+        <div className="flex-col mx-auto mt-12 sm:flex sm:max-w-lg">
+          <p className="text-base text-white">by @dipak_khade</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </>
+  )
 }
-
-// export default dynamic(() => Promise.resolve(Hero), { ssr: false });

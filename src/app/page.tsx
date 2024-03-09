@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Suspense fallback={<Spinner />}>
-        <main className="pt-24">
+        <main className="pt-16">
           <Hero />
 
           <TabsSection />

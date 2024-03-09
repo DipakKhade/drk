@@ -6,8 +6,7 @@ import githubProfile from "../../assets/images/gitprofile.png";
 import Portfolio from "../../assets/images/portfolio.png";
 import Blogs from "../../assets/images/Blogs.png";
 import Snippets from "../../assets/images/snippets.png";
-import { Suspense } from "react";
-import Spinner from "../Spinner";
+
 
 export function TabsSection() {
   const tabs = [
@@ -15,8 +14,8 @@ export function TabsSection() {
       title: "github",
       value: "github",
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>github</p>
+        <div className="w-full bg-neutral-900 dark:bg-slate-200 overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white ">
+          <p className="dark:text-slate-900">github</p>
           <GitHub />
         </div>
       ),
@@ -25,8 +24,8 @@ export function TabsSection() {
       title: "about",
       value: "about",
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>about</p>
+        <div className="w-full bg-neutral-900 dark:bg-slate-200 overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white">
+          <p className="dark:text-slate-900">about</p>
           <PortfolioTab />
         </div>
       ),
@@ -36,8 +35,8 @@ export function TabsSection() {
       title: "codes",
       value: "codes",
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>codes</p>
+        <div className="w-full bg-neutral-900 dark:bg-slate-200 overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white ">
+          <p className="dark:text-slate-900">codes</p>
           <SnippetsTab />
         </div>
       ),
@@ -88,7 +87,6 @@ function BlogsTab() {
 }
 const GitHub = () => {
   return (
-    <Suspense fallback={<Spinner />}>
       <Image
         src={githubProfile}
         alt="dummy image"
@@ -96,6 +94,5 @@ const GitHub = () => {
         height="1000"
         className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
       />
-    </Suspense>
   );
 };

@@ -36,10 +36,13 @@ export default function RootLayout({
   
 
        
-          <div className="min-h-[calc(100vh-64px)] dark:bg-[#121212]">
+          <div className="min-h-[calc(100vh-64px)]">
         <Providers>
 <Header/>
+<main className="min-h-screen">
+
             {children}
+</main>
             <Footer/>
         </Providers>
 

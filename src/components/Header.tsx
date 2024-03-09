@@ -19,7 +19,7 @@ export default function Header() {
 
 
    
-      <nav className="fixed z-50 top-0 px-4 w-full h-16 border-b shadow-sm bg-background/80 backdrop-blur-md flex items-center gap-2">
+      <nav className="fixed dark:bg-slate-950 z-50 top-0 px-4 w-full h-16 border-b shadow-sm bg-background/80 backdrop-blur-md flex items-center gap-2">
         <div className="px-6 max-w-2xl flex antialiased">
           {/* <h1
             className={cn(
@@ -30,10 +30,12 @@ export default function Header() {
             @Dipak Khade
           </h1> */}
 
+<Link href={'/'}>
 <Avatar>
   <AvatarImage src="https://assets.materialup.com/uploads/9a462a9b-2856-446a-97af-717c10fe59f9/preview.png" />
   <AvatarFallback>DK</AvatarFallback>
 </Avatar>
+</Link>
 
 
           <div className="absolute right-6 flex space-x-2">

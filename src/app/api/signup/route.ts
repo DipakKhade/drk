@@ -7,7 +7,10 @@ import bcrypt from "bcrypt";
 
 
 export async function POST(req: NextRequest, res: NextResponse) {
-  const data = await req.json();
+
+  try {
+
+    const data = await req.json();
   const userValidation = zod.object({
     name: zod.string(),
     email: zod.string().email(),
@@ -42,6 +45,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
   }
 
   return NextResponse.json({ message: "enter valid details" });
+    
+  } catch (error) {
+    return 
+  }
+  
 }
 
 
