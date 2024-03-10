@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -51,8 +49,6 @@
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -80,7 +76,7 @@ pre {
   margin: 0 !important;
   padding: 0 !important;
   padding-top: 2px;
-  background-color: #18181B !important;
+  background-color: #18181b !important;
 }
 
 code {

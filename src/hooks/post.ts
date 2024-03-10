@@ -27,16 +27,15 @@
 //       } catch (error) {
 //         console.log(error)
 //       }
-      
+
 //       // setPostSlug(response.items[0].fields.slug);
 //       setLoading(false);
-      
-//     })(); 
+
+//     })();
 //   }, []);
 
 //   return { posts, postSlug, loading };
 // }
-
 
 import { useState, useEffect } from "react";
 import { client } from "@/lib/contentful/client.js";
@@ -50,13 +49,10 @@ export function useGetPosts() {
     (async () => {
       const response = await client.getEntries({ content_type: "post" });
       setPosts(response);
-      setPostSlug(response.items[0].fields.slug);     
-      setLoading(false)
-
+      setPostSlug(response.items[0].fields.slug);
+      setLoading(false);
     })();
   }, []);
 
-
-
-  return { posts, postSlug, loading};
+  return { posts, postSlug, loading };
 }

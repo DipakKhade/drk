@@ -2,7 +2,7 @@ import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Link from "next/link";
 import ContentfulImage from "./Contentfulinage";
 import { CodeCard } from "./Code";
-import { CopyButton } from "./CopyButton"
+import { CopyButton } from "./CopyButton";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { tomorrowNight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 export const options: any = {
@@ -10,24 +10,21 @@ export const options: any = {
     [MARKS.CODE]: (text: string) => {
       return (
         <CodeCard>
-   
-      <CopyButton className="absolute right-4" value={text}/>
-       <SyntaxHighlighter
-              language="html"
-              style={tomorrowNight}
-              customStyle={{
-                padding: "8px",
-              }}
-            >             
-              {text}
-            </SyntaxHighlighter>
+          <CopyButton className="absolute right-4" value={text} />
+          <SyntaxHighlighter
+            language="html"
+            style={tomorrowNight}
+            customStyle={{
+              padding: "8px",
+            }}
+          >
+            {text}
+          </SyntaxHighlighter>
         </CodeCard>
       );
     },
   },
   renderNode: {
-
-
     [INLINES.ENTRY_HYPERLINK]: (node: any) => {
       if (node.data.target.sys.contentType.sys.id === "post") {
         return (

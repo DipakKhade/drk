@@ -31,23 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
       <body className={cn(fontSans.variable, fontHeading.variable)}>
-  
-
-       
-          <div className="min-h-[calc(100vh-64px)]">
-        <Providers>
-<Header/>
-<main className="min-h-screen">
-
-            {children}
-</main>
-            <Footer/>
-        </Providers>
-
-            </div>
-
+        <div className="min-h-[calc(100vh-64px)]">
+          <Providers>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </Providers>
+        </div>
       </body>
     </html>
   );

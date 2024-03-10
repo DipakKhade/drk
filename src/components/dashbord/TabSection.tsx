@@ -7,19 +7,8 @@ import Portfolio from "../../assets/images/portfolio.png";
 import Blogs from "../../assets/images/Blogs.png";
 import Snippets from "../../assets/images/snippets.png";
 
-
 export function TabsSection() {
   const tabs = [
-    {
-      title: "github",
-      value: "github",
-      content: (
-        <div className="w-full bg-neutral-900 dark:bg-slate-200 overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white ">
-          <p className="dark:text-slate-900">github</p>
-          <GitHub />
-        </div>
-      ),
-    },
     {
       title: "about",
       value: "about",
@@ -30,7 +19,16 @@ export function TabsSection() {
         </div>
       ),
     },
-
+    {
+      title: "github",
+      value: "github",
+      content: (
+        <div className="w-full bg-neutral-900 dark:bg-slate-200 overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white ">
+          <p className="dark:text-slate-900">github</p>
+          <GitHub />
+        </div>
+      ),
+    },
     {
       title: "codes",
       value: "codes",
@@ -87,12 +85,12 @@ function BlogsTab() {
 }
 const GitHub = () => {
   return (
-      <Image
-        src={githubProfile}
-        alt="dummy image"
-        width="1000"
-        height="1000"
-        className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
-      />
+    <Image
+      src={githubProfile}
+      alt="dummy image"
+      width="1000"
+      height="1000"
+      className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+    />
   );
 };

@@ -17,13 +17,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
           reject(err);
         }
         if (isValid) {
-          resolve(NextResponse.json({success:true, msg: "Login success" }));
+          resolve(NextResponse.json({ success: true, msg: "Login success" }));
         } else {
-          resolve(NextResponse.json({success:false, msg: "Invalid credentials" }));
+          resolve(
+            NextResponse.json({ success: false, msg: "Invalid credentials" }),
+          );
         }
       });
     });
   } else {
-    return NextResponse.json({success:false, msg: "Invalid credentials" });
+    return NextResponse.json({ success: false, msg: "Invalid credentials" });
   }
 }

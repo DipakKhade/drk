@@ -12,40 +12,38 @@ import {
 import { Pagination } from "@/components/ui/pagination";
 import Spinner from "@/components/Spinner";
 import { client } from "@/lib/contentful/client.js";
-import { useEffect ,useRef} from "react";
+import { useEffect, useRef } from "react";
 import { usePagination } from "@mantine/hooks";
 import { Post } from "@/lib/types";
 import Search from "@/components/SearchInput";
 
 const Page = () => {
-
   const ITEM_PER_PAGE = 4;
   const [posts, setPosts] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   const buttonRef = useRef(null);
-  
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await client.getEntries({ content_type: "post" });
         setPosts(response?.items);
-     
-          setLoading(false);
-        
-        } catch (error) {
-          console.error("Error fetching posts:", error);
-          setLoading(false);
-        }
-      };
-      
-      fetchPosts();
-// setTimeout(() => {
-//   buttonRef.current.click();
-// }, 500);
-    }, []);
-    
-    // const [visible, setVisible] = useState(posts?.slice(0,ITEM_PER_PAGE));
-  
+
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+    // setTimeout(() => {
+    //   buttonRef.current.click();
+    // }, 500);
+  }, []);
+
+  // const [visible, setVisible] = useState(posts?.slice(0,ITEM_PER_PAGE));
+
   const pagination = usePagination({
     total: Math.ceil(posts?.length / ITEM_PER_PAGE),
     initialPage: 1,
@@ -56,9 +54,8 @@ const Page = () => {
     },
   });
 
-// console.log(posts)
+  // console.log(posts)
 
-  
   if (loading) {
     return <Spinner />;
   }
@@ -75,35 +72,37 @@ const Page = () => {
           {
             // visible  &&  visible.length>0 &&
             <ul className="grid gap-10 sm:grid-cols-3">
-            {posts?.map((post: Post, index: number) => (
-              <div
-                key={index}
-                className="group relative flex flex-col space-y-2"
-              >
-                <Link href={`/blogs/${post.fields.slug}`}>
-                  <Card className="w-[440px] lg:w-[400px] hover:shadow-md hover:translate--11">
-                    <CardHeader></CardHeader>
-                    {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
-                    <CardContent>
-                      {" "}
-                      <Image
-                        className="rounded-sm"
-                        src={"http://" + post.fields.coverImage.fields.file.url}
-                        height={400}
-                        width={500}
-                        alt={post.fields.coverImage.fields.title}
-                      />
-                    </CardContent>
-                    <CardTitle className="pl-6">{post.fields.title}</CardTitle>
-                    <CardFooter>{post.fields.exceprt}</CardFooter>
-                  </Card>
-                </Link>
-              </div>
-            ))}
-          </ul>
-
+              {posts?.map((post: Post, index: number) => (
+                <div
+                  key={index}
+                  className="group relative flex flex-col space-y-2"
+                >
+                  <Link href={`/blogs/${post.fields.slug}`}>
+                    <Card className="w-[440px] lg:w-[400px] hover:shadow-md hover:translate--11">
+                      <CardHeader></CardHeader>
+                      {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
+                      <CardContent>
+                        {" "}
+                        <Image
+                          className="rounded-sm"
+                          src={
+                            "http://" + post.fields.coverImage.fields.file.url
+                          }
+                          height={400}
+                          width={500}
+                          alt={post.fields.coverImage.fields.title}
+                        />
+                      </CardContent>
+                      <CardTitle className="pl-6">
+                        {post.fields.title}
+                      </CardTitle>
+                      <CardFooter>{post.fields.exceprt}</CardFooter>
+                    </Card>
+                  </Link>
+                </div>
+              ))}
+            </ul>
           }
-         
         </div>
 
         {/* <div className="p-8 w-full m-auto">
