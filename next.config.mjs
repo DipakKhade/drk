@@ -1,4 +1,7 @@
 //setting up headers to varify the user
+
+import { string } from "zod";
+
 //
 const nextConfig = {
   images: {
@@ -7,3 +10,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+
