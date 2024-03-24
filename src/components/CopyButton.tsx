@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react";
 import { track } from "@vercel/analytics";
 import { cn } from "@/lib/utils";
-import { z } from "zod";
+import { any, z } from "zod";
 import { Button } from "./ui/button";
 import { FaRegCopy } from "react-icons/fa6";
 import { LuCopyCheck } from "react-icons/lu";
 
-type CopyEvent = {
-  name: string; // Event name
-  properties?: Record<string, string | number | boolean | null>; // Event properties
-};
+
 
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string;
   event?: CopyEvent;
   src?: string;
+}
+
+type CopyEvent = {
+  name: any; // Making the name property type any
+  properties?: Record<string, string | number | boolean | null>; // Event properties
+};
+
+interface CustomEvent extends Event {
+  customProperty: string;
+  name:any
 }
 
 const eventSchema = z.object({
@@ -70,17 +77,17 @@ export function CopyButton({
           className,
         )}
         onClick={() => {
-          copyToClipboardWithMeta(
-            value,
-            event
-              ? {
-                  name: event,
-                  properties: {
-                    code: value,
-                  },
-                }
-              : undefined,
-          );
+          // copyToClipboardWithMeta(
+          //   value,
+          //   event
+          //     ? {
+          //         name: event.name,
+          //         properties: {
+          //           code: value,
+          //         },
+          //       }
+          //     : undefined,
+          // );
           setHasCopied(true);
         }}
         {...props}
@@ -95,3 +102,4 @@ export function CopyButton({
     </>
   );
 }
+
