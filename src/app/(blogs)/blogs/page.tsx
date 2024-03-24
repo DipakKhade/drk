@@ -61,7 +61,7 @@ const Page = () => {
   }
   return (
     <>
-      <main className="pt-32 md:w-[90vw] m-auto">
+      <main className="pt-32 w-[85vw] md:w-[90vw]">
         {/* <Search/> */}
         <div className="container">
           <h2 className="text-2xl font-bold pb-8">
@@ -71,14 +71,15 @@ const Page = () => {
 
           {
             // visible  &&  visible.length>0 &&
-            <ul className="grid gap-10 sm:grid-cols-3">
+            <ul className="flex flex-wrap gap-10  sm:grid-cols-3">
+              
               {posts?.map((post: Post, index: number) => (
                 <div
                   key={index}
                   className="group relative flex flex-col space-y-2"
                 >
                   <Link href={`/blogs/${post.fields.slug}`}>
-                    <Card className="w-[440px] lg:w-[400px] hover:shadow-md hover:translate--11">
+                    <Card className="w-[300px] lg:w-[400px] hover:shadow-md hover:translate--11">
                       <CardHeader></CardHeader>
                       {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
                       <CardContent>
@@ -163,3 +164,6 @@ const Page = () => {
 };
 
 export default Page;
+
+
+

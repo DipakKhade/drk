@@ -39,7 +39,7 @@
 
 import { useState, useEffect } from "react";
 import { client } from "@/lib/contentful/client.js";
-import { usePagination } from "@mantine/hooks";
+// import { usePagination } from "@mantine/hooks";
 
 export function useGetPosts() {
   const [posts, setPosts] = useState<any>();

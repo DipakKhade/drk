@@ -5,6 +5,7 @@ import { CodeCard } from "./Code";
 import { CopyButton } from "./CopyButton";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { tomorrowNight } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import Image from "next/image";
 export const options: any = {
   renderMark: {
     [MARKS.CODE]: (text: string) => {
@@ -38,6 +39,26 @@ export const options: any = {
       }
     },
 
+ 
+    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      if (node.data.target.fields.file.contentType === "image/png" || node.data.target.fields.file.contentType === "image/jpeg") {
+        return (
+          <Image
+            src={"http://"+node.data.target.fields.file.url}
+            alt={node.data.target.fields.title}
+            height={500}
+            width={600}
+           
+          />
+        );
+      }
+    },
+    
+        
+            
+          
+   
+
     [INLINES.HYPERLINK]: (node: any) => {
       const text = node.content.find(
         (item: any) => item.nodeType === "text",
@@ -64,18 +85,6 @@ export const options: any = {
       }
     },
     // post.fields.coverImage.fields.file.url
-    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      if (node.data.target.fields.file.contentType === "image/png") {
-        return (
-          <ContentfulImage
-            src={node.data.target.fields.file.url}
-            height={node.data.target.fields.file.details.image.height}
-            width={node.data.target.fields.file.details.image.width}
-            alt={node.data.target.fields.title}
-            className="h-20 w-20"
-          />
-        );
-      }
-    },
+   
   },
 };
