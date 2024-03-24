@@ -6,9 +6,6 @@
     "routes": [
       { "handle": "vercel", "src": "/.*" }
     ],
-    "functions": { "api/**/*.{js,ts}": { "runtime": "nodejs14.x" } },
-    "build": {
-      "commands": ["prisma generate", "npm run build"]
-    }
+    "functions": { "api/**/*.{js,ts}": { "runtime": "nodejs14.x" } }
   }
   
