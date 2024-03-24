@@ -1,6 +1,5 @@
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Link from "next/link";
-import ContentfulImage from "./Contentfulinage";
 import { CodeCard } from "./Code";
 import { CopyButton } from "./CopyButton";
 import SyntaxHighlighter from "react-syntax-highlighter";
