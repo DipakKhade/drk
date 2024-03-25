@@ -40,7 +40,7 @@ export const options: any = {
 
  
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      if (node.data.target.fields.file.contentType === "image/png" || node.data.target.fields.file.contentType === "image/jpeg") {
+      if (node?.data?.target?.fields?.file?.contentType === "image/png" || node?.data?.target?.fields?.file?.contentType === "image/jpeg") {
         return (
           <Image
             src={"http://"+node.data.target.fields.file.url}

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
 import { cn } from "@/lib/utils";
-import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import Link from "next/link";
 
 import {
   Card,
@@ -18,7 +18,7 @@ import axios from "axios";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useSetRecoilState } from "recoil";
-import { sessionAtom, usernameAtom } from "@/states/recoilStates";
+import { sessionAtom} from "@/states/recoilStates";
 
 export default function Page() {
   const {
@@ -41,7 +41,7 @@ export default function Page() {
   const sessionStatus = useSetRecoilState(sessionAtom);
   return (
     <>
-    <main className="pt-24 w-[40vw] m-auto">
+    <main className="pt-24 sm:w-[40vw] m-auto">
       <Toaster richColors position="top-right" />
 
       <Card className="dark:bg-black">
@@ -117,6 +117,10 @@ export default function Page() {
               <BottomGradient />
             </button>
           </CardFooter>
+
+          <div className="p-2">
+            don&apos;t have an account ? <span className="font-semibold"><Link href={'/signup'}>sign up</Link></span>
+          </div>
         </form>
       </Card>
     </main>

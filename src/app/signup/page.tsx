@@ -4,7 +4,7 @@ import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
 import { cn } from "@/lib/utils";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
-
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
@@ -116,7 +116,9 @@ export default function Page() {
 
               <BottomGradient />
             </button>
-
+            <div className="p-2">
+            already have an account ? <span className="font-semibold"><Link href={'/login'}>log in</Link></span>
+          </div>
             <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
             <div className="flex flex-col space-y-4">

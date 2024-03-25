@@ -40,7 +40,7 @@ export default function Header() {
             } */}
 
             <Link href={"/login"}>
-              <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-violet-700">
+              <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8">
                 {sessionStatus}
               </Button>
             </Link>

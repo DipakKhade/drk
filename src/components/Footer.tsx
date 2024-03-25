@@ -145,7 +145,7 @@ export default function Footer() {
 
         <div className="w-full bg-black/5 p-4 text-center">
           © 2024 Copyright
-          <Link href="https://tw-elements.com/"> @dipakkhade</Link>
+          <Link href="https://github.com/DipakKhade"> @dipakkhade</Link>
         </div>
       </footer>
     </>

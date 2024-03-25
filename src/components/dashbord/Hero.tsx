@@ -15,7 +15,7 @@ export default function Hero() {
               </span>
               <p className="mx-auto mt-8 text-2xl font-extrabold tracking-tight md:text-4xl">
                 Built with Next.js 14 server components
-                <span className="md:block">An End to End fullstack site</span>
+                <span className="md:block"> <br className="md:hidden"/>An End to End fullstack site</span>
               </p>
               <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
               <p className="max-w-3xl mx-auto mt-4 lg:text-lg text-slate-500">
