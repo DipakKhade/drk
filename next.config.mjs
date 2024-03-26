@@ -1,6 +1,5 @@
 //setting up headers to varify the user
 
-import { string } from "zod";
 
 //
 const nextConfig = {
@@ -10,5 +9,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-
-

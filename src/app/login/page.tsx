@@ -17,8 +17,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useSetRecoilState } from "recoil";
-import { sessionAtom} from "@/states/recoilStates";
 
 export default function Page() {
   const {
@@ -38,11 +36,11 @@ export default function Page() {
     }
   }, [success]);
 
-  const sessionStatus = useSetRecoilState(sessionAtom);
+  // const sessionStatus = useSetRecoilState(sessionAtom);
   return (
     <>
     <main className="pt-24 sm:w-[40vw] m-auto">
-      <Toaster richColors position="top-right" />
+      {/* <Toaster richColors position="top-right" /> */}
 
       <Card className="dark:bg-black">
         <form

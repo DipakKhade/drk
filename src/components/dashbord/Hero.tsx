@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <>
       <section className="flex  items-center relative">
-        <div className="h-[50rem] w-full dark:bg-slate-950 bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
+        <div className="h-[45rem] w-full dark:bg-slate-950 bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
           <div className="max-w-4xl mx-auto text-center">
             <div>
               <span className="inline-flex items-center">
