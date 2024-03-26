@@ -87,7 +87,7 @@ const Page = () => {
                         <Image
                           className="rounded-sm"
                           src={
-                            "http://" + post?.fields?.coverImage?.fields?.file?.url
+                            "http:" + post?.fields?.coverImage?.fields?.file?.url
                           }
                           height={400}
                           width={500}

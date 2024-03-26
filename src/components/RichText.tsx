@@ -43,7 +43,7 @@ export const options: any = {
       if (node?.data?.target?.fields?.file?.contentType === "image/png" || node?.data?.target?.fields?.file?.contentType === "image/jpeg") {
         return (
           <Image
-            src={"http://"+node.data.target.fields.file.url}
+            src={"http:"+node.data.target.fields.file.url}
             alt={node.data.target.fields.title}
             height={500}
             width={600}
