@@ -41,7 +41,7 @@ export default function Page(props: slugProps) {
 
         {currentPost?.fields?.coverImage?.fields?.file?.url && (
           <Image
-            src={"http://" + currentPost?.fields?.coverImage?.fields?.file?.url}
+            src={"http:" + currentPost?.fields?.coverImage?.fields?.file?.url}
             width={600}
             height={500}
             alt={currentPost?.fields?.coverImage?.fields?.title}
