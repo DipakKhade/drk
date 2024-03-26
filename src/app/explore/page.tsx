@@ -1,4 +1,6 @@
+'use client';
 import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -6,6 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { AnimatePresence, motion } from "framer-motion";
+import { CanvasRevealEffect } from "@/components/canvas-reveal-effect";
 
 interface SVG {
   key: string;
@@ -72,11 +76,21 @@ const svgs: SVG[] = [
   },
 ];
 
-export default function page() {
+export default function Page() {
+  const [hovered, setHovered] = useState(false);
   return (
     <>
-      <main className="m-auto  md:pl-[30vw] pt-24 justify-center align-middle">
-        <Carousel className="justify-center align-middle max-w-lg">
+      <main className="">
+       
+
+<div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="h-[60rem] flex flex-col lg:flex-row overflow-hidden items-center justify-center dark:bg-black bg-blue-300 w-full gap-4 mx-auto px-8 relative "
+    >
+      
+      
+ <Carousel className="justify-center align-middle max-w-lg">
           <CarouselContent>
             {svgs.map((svg, index) => (
               <CarouselItem key={index}>
@@ -95,6 +109,30 @@ export default function page() {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="h-full w-full absolute inset-0"
+          >
+            <CanvasRevealEffect
+              animationSpeed={5}
+              containerClassName="bg-transparent"
+              colors={[
+                [59, 130, 246],
+                [139, 92, 246],
+              ]}
+              opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
+              dotSize={2}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Radial gradient for the cute fade */}
+      <div className="absolute inset-0 dark:[mask-image:radial-gradient(400px_at_center,white,transparent)] bg-blue-500/50 dark:bg-black/90" />
+    </div>
       </main>
     </>
   );
