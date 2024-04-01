@@ -14,7 +14,7 @@ const handler = nextAuth({
         password: { label: "password", type: "password", placeholder: "" },
       },
 
-      async authorize(credentials:any) {
+      async authorize(credentials:any) : Promise<any> {
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.username,
@@ -38,8 +38,8 @@ const handler = nextAuth({
     }),
 
     GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        clientId: process.env.GOOGLE_CLIENT_ID ||'',
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
       })
   ],
 
