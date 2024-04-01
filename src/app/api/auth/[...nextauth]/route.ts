@@ -14,8 +14,10 @@ const handler = nextAuth({
         username: { label: "email", type: "text", placeholder: "" },
         password: { label: "password", type: "password", placeholder: "" },
       },
+      
 
       async authorize(credentials:any) : Promise<any> {
+        
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.username,
@@ -43,8 +45,8 @@ const handler = nextAuth({
         clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
       }),
       GitHubProvider({
-        clientId: process.env.GITHUB_ID || '',
-        clientSecret: process.env.GITHUB_SECRET || ''
+        clientId: process.env.GITHUB_CLIENT_ID || '',
+        clientSecret: process.env.GITHUB_CLIENT_SECRETE || ''
       })
   ],
 
