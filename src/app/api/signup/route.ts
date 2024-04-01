@@ -14,32 +14,19 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
 
     const validData = userValidation.safeParse(data.data);
-    // console.log(validData)
-    // console.log(data)
     if (validData.success) {
       const hashedPassword = await bcrypt.hash(validData.data.password, 10);
-      // const token=jwt.sign(validData.data,process.env.JWT_SECRETE)
-      const TokenData = {
-        name: validData.data.name,
-        email: validData.data.email,
-        password: hashedPassword,
-      };
-      const Token = jwt.sign(TokenData, "thisisisamnfsdnkdshkhds");
-
+     
       const user = await prisma.user.create({
         data: {
           name: validData.data.name,
           email: validData.data.email,
-          password: hashedPassword,
-          token: Token,
+          password: validData.data.password,
         },
       });
 
       return NextResponse.json({
         succes: true,
-        user,
-        Token,
-        username: validData.data.name,
       });
     }
 

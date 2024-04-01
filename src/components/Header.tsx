@@ -3,17 +3,18 @@ import { Poppins } from "next/font/google";
 import { ModeToggle } from "./ThemeToggle";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useRecoilValue } from "recoil";
-import { sessionAtom } from "@/states/recoilStates";
 import { Button } from "./ui/button";
+import { signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 const rs = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
 export default function Header() {
-  const sessionStatus: string = useRecoilValue(sessionAtom);
-  // const username:string|null=localStorage.getItem('username')
+  const { data: session, status } = useSession();
+  console.log(session);
   return (
     <>
       <nav className="fixed dark:bg-slate-950 z-50 top-0 px-4 w-full h-16 border-b shadow-sm bg-background/80 backdrop-blur-md flex items-center gap-2">
@@ -34,16 +35,32 @@ export default function Header() {
             </Avatar>
           </Link>
 
-          <div className="absolute right-6 flex space-x-2">
-            {/* {
-              username?.length >1 && <Avatar> <AvatarFallback  className="bg-green-300">{username[0].toUpperCase()}</AvatarFallback> </Avatar>
-            } */}
+          <div className="pl-2 pt-2 font-semibold">
+            {
+              session?.user?.name ? <span>{session?.user?.name}</span> : ''
+            }
+          </div>
 
-            <Link href={"/login"}>
-              <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8">
-                {sessionStatus}
+
+          <div className="absolute right-6 flex space-x-2">
+            {status == "unauthenticated" ? (
+             
+             <Link href={'/signup'}>
+
+              <Button
+                className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8"
+                >
+                signup
               </Button>
-            </Link>
+                </Link>
+            ) : (
+              <Button
+                onClick={() => signOut()}
+                className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8"
+              >
+                logout
+              </Button>
+            )}
             <ModeToggle />
           </div>
         </div>

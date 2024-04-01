@@ -137,7 +137,7 @@ export default function Footer() {
                 toast("enter a valid email");
               }
             }}
-            className="bg-zinc-800"
+            className="bg-slate-50 text-slate-900"
           >
             newsletter
           </Button>

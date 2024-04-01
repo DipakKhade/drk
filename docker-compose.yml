@@ -1,24 +1,8 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  application:
+    image: .
+    container_name: nextappcontainer
     ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: "postgresql://postgres:your_password@db:5432/your_database"
-
-  db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_database
+      -3000:3000

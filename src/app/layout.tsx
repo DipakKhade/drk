@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { Providers } from "./Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 //font
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -28,7 +27,12 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>)
+
+{
+
+
+  
   return (
     <html lang="en">
       <body className={cn(fontSans.variable, fontHeading.variable)}>
