@@ -14,7 +14,7 @@ const rs = Poppins({
 
 export default function Header() {
   const { data: session, status } = useSession();
-  console.log(session);
+  // console.log(session);
   return (
     <>
       <nav className="fixed dark:bg-slate-950 z-50 top-0 px-4 w-full h-16 border-b shadow-sm bg-background/80 backdrop-blur-md flex items-center gap-2">
@@ -30,7 +30,13 @@ export default function Header() {
 
           <Link href={"/"}>
             <Avatar>
-              <AvatarImage src="https://assets.materialup.com/uploads/9a462a9b-2856-446a-97af-717c10fe59f9/preview.png" />
+              {
+                status=='unauthenticated'? 
+                <AvatarImage src="https://assets.materialup.com/uploads/9a462a9b-2856-446a-97af-717c10fe59f9/preview.png" />
+                :
+                
+              <AvatarImage src={session?.user?.image ||'https://assets.materialup.com/uploads/9a462a9b-2856-446a-97af-717c10fe59f9/preview.png'} />
+              }
               <AvatarFallback>DK</AvatarFallback>
             </Avatar>
           </Link>
