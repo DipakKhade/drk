@@ -43,7 +43,7 @@ const handler = nextAuth({
       })
   ],
 
-  secret: process.env.NEXT_AUTH_SECRETE,
+  secret: process.env.NEXT_AUTH_SECRETE || 'dipakkhadethisisaewljiqwu',
 });
 
 export const GET = handler;
