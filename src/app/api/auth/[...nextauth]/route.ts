@@ -43,45 +43,13 @@ const handler = nextAuth({
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID ||'',
         clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-        async profile(profile, tokens) : Promise<any>{
-          
-  
         
-            await prisma.user.create({
-              data: {
-                email: profile.email,
-                name: profile.name,
-                password:'logged-via-google'
-              },
-            });
-   
-          return {
-            email: profile.email,
-            name: profile.name,
-          };
-        },
 
       }),
       GitHubProvider({
         clientId: process.env.GITHUB_CLIENT_ID || '',
         clientSecret: process.env.GITHUB_CLIENT_SECRETE || '',
-        async profile(profile, tokens) : Promise<any>{          
-          
-  
-      
-            await prisma.user.create({
-              data: {
-                email: profile.email,
-                name: profile.name,
-                password:'logged-via-github'
-              },
-            });
-          
-          return {
-            email: profile.email,
-            name: profile.name,
-          };
-        },
+       
       })
   ],
 
