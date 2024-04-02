@@ -9,13 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Pagination } from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
 import Spinner from "@/components/Spinner";
 import { client } from "@/lib/contentful/client.js";
 import { useEffect, useRef } from "react";
 import { usePagination } from "@mantine/hooks";
 import { Post } from "@/lib/types";
-import Search from "@/components/SearchInput";
 
 const Page = () => {
   const ITEM_PER_PAGE = 4;
@@ -64,14 +63,14 @@ const Page = () => {
       <main className="pt-32 w-[85vw] md:w-[90vw]">
         {/* <Search/> */}
         <div className="container">
-          <h2 className="text-2xl font-bold pb-8">
+          <h2 className="text-2xl font-bold pb-8 dark:text-blue-600">
             I share what I&apos;ve been working on recently and things I learned
             along the way.
           </h2>
 
           {
             // visible  &&  visible.length>0 &&
-            <ul className="flex flex-wrap gap-10  sm:grid-cols-3">
+            <ul className="flex flex-wrap gap-10  sm:grid-cols-3 mx-auto w-full md:max-w-screen-xl md:px-20 min-h-screen">
               
               {posts?.map((post: Post, index: number) => (
                 <div
@@ -79,13 +78,13 @@ const Page = () => {
                   className="group relative flex flex-col space-y-2"
                 >
                   <Link href={`/blogs/${post.fields.slug}`}>
-                    <Card className="w-[300px] lg:w-[400px] hover:shadow-md hover:translate--11">
+                    <Card className="w-[300px]  hover:shadow-md h-[380px] hover:translate--11">
                       <CardHeader></CardHeader>
                       {/* <CardDescription>{post.fields.exceprt}</CardDescription> */}
-                      <CardContent>
+                      <CardContent className="object-cover">
                         {" "}
                         <Image
-                          className="rounded-sm"
+                          className="rounded-sm object-contain"
                           src={
                             "http:" + post?.fields?.coverImage?.fields?.file?.url
                           }
@@ -97,7 +96,14 @@ const Page = () => {
                       <CardTitle className="pl-6">
                         {post.fields.title}
                       </CardTitle>
-                      <CardFooter>{post.fields.exceprt}</CardFooter>
+                      <CardFooter className="text-ellipsis overflow-hidden text-sm pt-2 line-clamp-3">{post.fields.exceprt}</CardFooter>
+<span className="pl-4">
+  <Link href={`/blogs/${post.fields.slug}`}>
+                     <Button className="px-6">
+                      visit
+                     </Button>
+  </Link>
+</span>
                     </Card>
                   </Link>
                 </div>

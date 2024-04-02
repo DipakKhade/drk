@@ -67,6 +67,11 @@ export default function Header() {
                 logout
               </Button>
             )}
+            <div>
+              <Link href={'https://dipakkhade-dev.vercel.app/'}>
+              <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8">about</Button>
+              </Link>
+            </div>
             <ModeToggle />
           </div>
         </div>
