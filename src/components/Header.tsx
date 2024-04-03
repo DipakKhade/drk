@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <>
       <nav className="fixed dark:bg-slate-950 z-50 top-0 px-4 w-full h-16 border-b shadow-sm bg-background/80 backdrop-blur-md flex items-center gap-2">
-        <div className="px-6 max-w-2xl flex antialiased">
+        <div className="sm:px-6 max-w-2xl flex antialiased">
           {/* <h1
             className={cn(
               "sm:text-2xl font-semibold text-neutral-800 dark:text-neutral-200 md:text-3xl mb-2",
