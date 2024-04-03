@@ -32,20 +32,20 @@ export default function Header() {
             <Avatar>
               {
                 status=='unauthenticated'? 
-                <AvatarImage src="https://assets.materialup.com/uploads/9a462a9b-2856-446a-97af-717c10fe59f9/preview.png" />
+                <AvatarImage src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" />
                 :
                 
-              <AvatarImage src={session?.user?.image ||'https://assets.materialup.com/uploads/9a462a9b-2856-446a-97af-717c10fe59f9/preview.png'} />
+              <AvatarImage src={session?.user?.image ||'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='} />
               }
               <AvatarFallback>DK</AvatarFallback>
             </Avatar>
-          </Link>
 
           <div className="pl-2 pt-2 font-semibold">
             {
               session?.user?.name ? <span>{session?.user?.name}</span> : ''
             }
           </div>
+            </Link>
 
 
           <div className="absolute right-6 flex space-x-2">

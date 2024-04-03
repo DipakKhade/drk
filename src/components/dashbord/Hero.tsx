@@ -15,16 +15,11 @@ export default function Hero() {
               </span>
               <p className="mx-auto mt-8 text-2xl font-extrabold tracking-tight md:text-4xl">
                 Built with Next.js 14 server components
-                <span className="md:block"> <br className="md:hidden"/>An End to End fullstack site</span>
+                {/* <span className="md:block"> <br className="md:hidden"/>An End to End fullstack site</span> */}
               </p>
               <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
               <p className="max-w-3xl mx-auto mt-4 lg:text-lg text-slate-500">
-                adorned with the sleek Shadcn Aceternity UI, integrates dynamic
-                blogs fetched from Contentful. Under the hood, we employ Prisma
-                and PostgreSQL for reliable data storage. Enjoy secure login and
-                sign-up features with Axios, JSON Web Tokens, Zod for
-                validation, and bcrypt for password hashing. Dockerized for easy
-                deployment.
+                Tech stack : Tailwind , Shadcn , Prisma , PostgresQL , Axios , NextAuth , bcrypt , Zod , Docker , CI/CD
               </p>
             </div>
             <div className="flex flex-col justify-center gap-3 mt-10 sm:flex-row">

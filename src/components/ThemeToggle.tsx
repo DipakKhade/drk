@@ -18,7 +18,7 @@ export function ModeToggle() {
     <>
       <div className="flex items-center space-x-2">
         <Switch onClick={toggleTheme} id="theme-toggle" />
-        <Label htmlFor="theme-toggle">{currentTheme}</Label>
+        {/* <Label htmlFor="theme-toggle">{currentTheme}</Label> */}
       </div>
     </>
   );
