@@ -39,13 +39,13 @@ export default function Header() {
               }
               <AvatarFallback>DK</AvatarFallback>
             </Avatar>
+            </Link>
 
           <div className="pl-2 pt-2 font-semibold">
             {
               session?.user?.name ? <span>{session?.user?.name}</span> : ''
             }
           </div>
-            </Link>
 
 
           <div className="absolute right-6 flex space-x-2">
