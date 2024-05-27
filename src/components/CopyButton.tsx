@@ -77,17 +77,18 @@ export function CopyButton({
           className,
         )}
         onClick={() => {
-          // copyToClipboardWithMeta(
-          //   value,
-          //   event
-          //     ? {
-          //         name: event.name,
-          //         properties: {
-          //           code: value,
-          //         },
-          //       }
-          //     : undefined,
-          // );
+          copyToClipboardWithMeta(
+            value,
+            event
+              ? {
+                //@ts-ignore
+                  name: event.name,
+                  properties: {
+                    code: value,
+                  },
+                }
+              : undefined,
+          );
           setHasCopied(true);
         }}
         {...props}
