@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 const rs = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -32,7 +33,8 @@ export default function Header() {
             <Avatar>
               {
                 status=='unauthenticated'? 
-                <AvatarImage src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" />
+                
+                <MdOutlineAccountCircle className="text-3xl"/>
                 :
                 
               <AvatarImage src={session?.user?.image ||'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='} />

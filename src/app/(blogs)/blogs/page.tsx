@@ -79,7 +79,7 @@ const Page = () => {
      
      <CommandInput
       onFocus={() => setisActive(true)} 
-      // onBlur={() => setisActive(false)}
+      onBlur={() => setisActive(false)}
       placeholder="Type to search ..." />
      
 { isActive ?   <CommandList>
@@ -118,10 +118,10 @@ const Page = () => {
               {posts?.map((post: Post, index: number) => (
                 <div
                   key={index}
-                  className="group relative flex flex-col space-y-2"
+                  className="group relative flex flex-col space-y-2 w-[75vw] sm:w-[30vw]"
                 >
                  
-                  <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-80">
+                  <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-sm">
                     <div className="">
                       <Image
                         className="rounded-sm"
