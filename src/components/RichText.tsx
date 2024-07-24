@@ -38,25 +38,21 @@ export const options: any = {
       }
     },
 
- 
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      if (node?.data?.target?.fields?.file?.contentType === "image/png" || node?.data?.target?.fields?.file?.contentType === "image/jpeg") {
+      if (
+        node?.data?.target?.fields?.file?.contentType === "image/png" ||
+        node?.data?.target?.fields?.file?.contentType === "image/jpeg"
+      ) {
         return (
           <Image
-            src={"http:"+node.data.target.fields.file.url}
+            src={"http:" + node.data.target.fields.file.url}
             alt={node.data.target.fields.title}
             height={500}
             width={600}
-           
           />
         );
       }
     },
-    
-        
-            
-          
-   
 
     [INLINES.HYPERLINK]: (node: any) => {
       const text = node.content.find(
@@ -84,6 +80,5 @@ export const options: any = {
       }
     },
     // post.fields.coverImage.fields.file.url
-   
   },
 };

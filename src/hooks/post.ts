@@ -57,26 +57,25 @@ export function useGetPosts() {
   return { posts, postSlug, loading };
 }
 
-
-export function useGetSpecificPost(slug:string){
-  const [Specificpost ,setSpecificPost]=useState<any>()
+export function useGetSpecificPost(slug: string) {
+  const [Specificpost, setSpecificPost] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
-  useEffect(()=>{
-    (async()=>{
-      client.getEntries({
-        content_type: 'post',
-        //@ts-ignore
-        // select:"fields.slug"===slug
-        'fields.slug': slug, 
-      })
-      .then((response:any) => {
-        setSpecificPost(response)
-        // console.log(response)
-        setLoading(false);
-      })
-      .catch(console.error)
+  useEffect(() => {
+    (async () => {
+      client
+        .getEntries({
+          content_type: "post",
+          //@ts-ignore
+          // select:"fields.slug"===slug
+          "fields.slug": slug,
+        })
+        .then((response: any) => {
+          setSpecificPost(response);
+          // console.log(response)
+          setLoading(false);
+        })
+        .catch(console.error);
     })();
-
-  })
-  return {Specificpost,setSpecificPost,loading}
+  });
+  return { Specificpost, setSpecificPost, loading };
 }

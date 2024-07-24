@@ -6,8 +6,6 @@ import { Button } from "./ui/button";
 import { FaRegCopy } from "react-icons/fa6";
 import { LuCopyCheck } from "react-icons/lu";
 
-
-
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string;
   event?: CopyEvent;
@@ -21,7 +19,7 @@ type CopyEvent = {
 
 interface CustomEvent extends Event {
   customProperty: string;
-  name:any
+  name: any;
 }
 
 const eventSchema = z.object({
@@ -81,7 +79,7 @@ export function CopyButton({
             value,
             event
               ? {
-                //@ts-ignore
+                  //@ts-ignore
                   name: event.name,
                   properties: {
                     code: value,
@@ -103,4 +101,3 @@ export function CopyButton({
     </>
   );
 }
-

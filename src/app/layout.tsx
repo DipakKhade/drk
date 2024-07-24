@@ -27,12 +27,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>)
-
-{
-
-
-  
+}>) {
   return (
     <html lang="en">
       <body className={cn(fontSans.variable, fontHeading.variable)}>
