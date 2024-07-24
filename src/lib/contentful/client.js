@@ -7,5 +7,4 @@ export const client = createClient({
 
   space: "4eslqvwm6k7a",
   accessToken: "TRFgKOAaQ0GMrh9eYnPuTxyfU7XqF0daVGPa8-T3SQA",
-
 });

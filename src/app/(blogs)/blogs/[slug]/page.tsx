@@ -1,5 +1,5 @@
 "use client";
-import { useGetPosts ,useGetSpecificPost} from "@/hooks/post";
+import { useGetPosts, useGetSpecificPost } from "@/hooks/post";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -17,8 +17,8 @@ export default function Page(props: slugProps) {
     const fetchPost = async () => {
       try {
         const response = await client.getEntries({
-          content_type: 'post',
-          'fields.slug': props.params.slug, // Correctly filtering by fields.slug
+          content_type: "post",
+          "fields.slug": props.params.slug, // Correctly filtering by fields.slug
         });
 
         if (response.items.length > 0) {
@@ -36,7 +36,7 @@ export default function Page(props: slugProps) {
       fetchPost();
     }
   }, [props.params.slug]); // Re-run the effect when slug changes
-  
+
   //   console.log(posts)
   // console.log(currentPost?.fields?.content);
 

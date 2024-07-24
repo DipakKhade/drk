@@ -19,7 +19,8 @@ export default function Hero() {
               </p>
               <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
               <p className="max-w-3xl mx-auto mt-4 lg:text-lg text-slate-500">
-                Tech stack : Tailwind , Shadcn , Prisma , PostgresQL , Axios , NextAuth , bcrypt , Zod , Docker , CI/CD
+                Tech stack : Tailwind , Shadcn , Prisma , PostgresQL , Axios ,
+                NextAuth , bcrypt , Zod , Docker , CI/CD
               </p>
             </div>
             <div className="flex flex-col justify-center gap-3 mt-10 sm:flex-row">

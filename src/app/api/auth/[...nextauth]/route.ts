@@ -14,10 +14,8 @@ const handler = nextAuth({
         username: { label: "email", type: "text", placeholder: "" },
         password: { label: "password", type: "password", placeholder: "" },
       },
-      
 
-      async authorize(credentials:any) : Promise<any> {
-        
+      async authorize(credentials: any): Promise<any> {
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.username,
@@ -41,19 +39,16 @@ const handler = nextAuth({
     }),
 
     GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID ||'',
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-        
-
-      }),
-      GitHubProvider({
-        clientId: process.env.GITHUB_CLIENT_ID || '',
-        clientSecret: process.env.GITHUB_CLIENT_SECRETE || '',
-       
-      })
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.GITHUB_CLIENT_SECRETE || "",
+    }),
   ],
 
-  secret: process.env.NEXT_AUTH_SECRETE || 'dipakkhadethisisaewljiqwu',
+  secret: process.env.NEXT_AUTH_SECRETE || "dipakkhadethisisaewljiqwu",
 });
 
 export const GET = handler;

@@ -22,7 +22,7 @@ import {
   Settings,
   Smile,
   User,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
   Command,
@@ -33,14 +33,14 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command"
-
-
+} from "@/components/ui/command";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [posts, setPosts] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [isActive,setisActive]=useState<any>(false)
+  const [isActive, setisActive] = useState<any>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -59,52 +59,49 @@ const Page = () => {
     };
 
     fetchPosts();
-
-  
-
-
-    
   }, []);
 
-
+  function redirecttoblog(slug: string) {
+    router.push(`${slug}`);
+    setisActive(false);
+  }
 
   if (loading) {
     return <Spinner />;
   }
   return (
     <>
-
       <main className="pt-24 md:pl-28 w-[85vw] md:w-[90vw]">
         <Command className="rounded-lg border shadow-md ml-8">
-     
-     <CommandInput
-      onFocus={() => setisActive(true)} 
-      onBlur={() => setisActive(false)}
-      placeholder="Type to search ..." />
-     
-{ isActive ?   <CommandList>
-       <CommandEmpty>No results found.</CommandEmpty>
-       <CommandGroup heading="Suggestions">
+          <CommandInput
+            onFocus={() => setisActive(true)}
+            // onBlur={() => setTimeout(() => setisActive(false), 1000)}
+            placeholder="Type to search ..."
+          />
 
-{
- posts.map((i:any,index:number)=>(
-   <CommandItem key={index}>
-    <Smile className="mr-2 h-4 w-4" />
-    <Link href={`/blogs/${posts[index].fields.slug}`}>
-   <span>{(posts[index].fields["title"])}</span>
-    </Link>
- </CommandItem>
- ))
-}
-       
-       </CommandGroup>
-       <CommandSeparator />
-       
-     </CommandList>   :''}
-    
-   </Command>
-
-
+          {isActive ? (
+            <CommandList>
+              <CommandEmpty>No results found.</CommandEmpty>
+              <CommandGroup heading="Suggestions">
+                {posts.map((i: any, index: number) => (
+                  <CommandItem key={index}>
+                    <Smile className="mr-2 h-4 w-4" />
+                    <button
+                      onClick={() =>
+                        redirecttoblog(`/blogs/${posts[index].fields.slug}`)
+                      }
+                    >
+                      <span>{posts[index].fields["title"]}</span>
+                    </button>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+              <CommandSeparator />
+            </CommandList>
+          ) : (
+            ""
+          )}
+        </Command>
 
         <div className="container pt-12">
           <h2 className="md:text-2xl font-bold pb-8 dark:text-blue-600">
@@ -120,7 +117,6 @@ const Page = () => {
                   key={index}
                   className="group relative flex flex-col space-y-2 w-[75vw] sm:w-[30vw]"
                 >
-                 
                   <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-sm">
                     <div className="">
                       <Image
