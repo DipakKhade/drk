@@ -16,12 +16,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const validData = userValidation.safeParse(data.data);
     if (validData.success) {
       const hashedPassword = await bcrypt.hash(validData.data.password, 10);
-     
+
       const user = await prisma.user.create({
         data: {
           name: validData.data.name,
           email: validData.data.email,
-          password: validData.data.password,             //use hashed password
+          password: validData.data.password, //use hashed password
         },
       });
 

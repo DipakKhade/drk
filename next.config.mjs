@@ -1,6 +1,5 @@
 //setting up headers to varify the user
 
-
 //
 const nextConfig = {
   images: {

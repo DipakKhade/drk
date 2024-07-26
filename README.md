@@ -1,4 +1,4 @@
-# 
+#
 
 ## Overview
 
@@ -30,7 +30,6 @@ cd drk
 
 ```
 
-
 3. Install dependencies:
 
 ```
@@ -38,7 +37,8 @@ npm install
 ```
 
 4. Set up environment variables:
-copy .env.example to .env
+   copy .env.example to .env
+
 ```
 cp .env.example .env
 ```
@@ -83,4 +83,3 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Commit your changes (`git commit -am 'Add new feature'`)
 5. Push to the branch (`git push origin feature/my-feature`)
 6. Create a new Pull Request
-

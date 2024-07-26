@@ -31,36 +31,31 @@ export default function Header() {
 
           <Link href={"/"}>
             <Avatar>
-              {
-                status=='unauthenticated'? 
-                
-                <MdOutlineAccountCircle className="text-3xl"/>
-                :
-                
-              <AvatarImage src={session?.user?.image ||'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='} />
-              }
+              {status == "unauthenticated" ? (
+                <MdOutlineAccountCircle className="text-3xl" />
+              ) : (
+                <AvatarImage
+                  src={
+                    session?.user?.image ||
+                    "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+                  }
+                />
+              )}
               <AvatarFallback>DK</AvatarFallback>
             </Avatar>
-            </Link>
+          </Link>
 
           <div className="pl-2 pt-2 font-semibold">
-            {
-              session?.user?.name ? <span>{session?.user?.name}</span> : ''
-            }
+            {session?.user?.name ? <span>{session?.user?.name}</span> : ""}
           </div>
-
 
           <div className="absolute right-6 flex space-x-2">
             {status == "unauthenticated" ? (
-             
-             <Link href={'/signup'}>
-
-              <Button
-                className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8"
-                >
-                signup
-              </Button>
-                </Link>
+              <Link href={"/signup"}>
+                <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8">
+                  signup
+                </Button>
+              </Link>
             ) : (
               <Button
                 onClick={() => signOut()}
@@ -70,8 +65,10 @@ export default function Header() {
               </Button>
             )}
             <div>
-              <Link href={'https://dipakkhade-dev.vercel.app/'}>
-              <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8">about</Button>
+              <Link href={"https://dipakkhade-dev.vercel.app/"}>
+                <Button className="bg-slate-100 text-slate-800 hover:text-slate-100 hover:bg-blue-400 w-14 h-8">
+                  about
+                </Button>
               </Link>
             </div>
             <ModeToggle />

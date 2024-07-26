@@ -1,8 +1,7 @@
-version: '3.8'
+version: "3.8"
 
 services:
   application:
     image: .
     container_name: nextappcontainer
-    ports:
-      -3000:3000
+    ports: -3000:3000
